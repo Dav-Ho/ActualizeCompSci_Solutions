@@ -61,7 +61,7 @@ reverse_recursion("hello")
 
 def division(num, dem)
   remainder = (num / dem) * dem
-     9/2 * 2 = 8 
+    9/2 * 2 = 8
 
   if num < dem
     puts num
