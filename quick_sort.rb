@@ -5,32 +5,31 @@ class SortableArray
   end
 
   def partition
-
-    # We always choose the rightmost element as the pivot
     left_pointer = 0
-    pivot_position = -1
-    pivot = @array[pivot_position]
-    # We start the right pointer immediately to the left of the pivot
-    pivot_position -= 1
+    pivot_position = -1   # Variable used to set the rightmost element as the pivot.
+    pivot = @array[pivot_position]  # Set the right pointer immediately to the left of the pivot
+
+    pivot_position -= 1 # pivot_position becomes -2 to create the right_pointer.
     right_pointer = pivot_position
     while true do
-      while @array[left_pointer] < pivot do #left pointer keeps going right until it reaches
+      while @array[left_pointer] < pivot do #left pointer keeps going right until it is false
         left_pointer += 1                   #value == or > pivot
       end
-      while @array[right_pointer] > pivot do #right pointer keeps going left until it reaches
+      while @array[right_pointer] > pivot do #right pointer keeps going left until it is false
         right_pointer -= 1                   #value == or < pivot
       end
       if left_pointer >= (@array.length + right_pointer)
         swap(left_pointer, -1)
         break
+        # Condition set once both pointers are set on the same value or if the left_pointer is greater.
       else
         swap(left_pointer, (@array.length + right_pointer))
+        # If not... Swap with pointers once both pointers conditions are false.
       end
     end
-    # As a final step, we swap the left pointer with the pivot itself
-    #swap(left_pointer, pivot_position)
-    # We return the left_pointer for the sake of the quicksort method
-    # which will appear later in this chapter
+      # The swap method is created to switch the positions of the pointers.
+      # Once both pointers are the same value. Swap method is used on the left_pointer
+      # and the pivot, last index (-1), to complete the partition. 
     swap(-2, -1)
     @array
   end
